@@ -22,22 +22,15 @@ tweetDictionary = {
 
 
 def twitterSearch(topic, count):
-    tweets = api.search(topic, lang='en', count=count)
-    jsonTweets = json.loads(tweets)
-    for tweet in tweets:
-        print(jsonTweets)
-
-
-tweetObject = api.search('bitcoin', lang='en', count=100)
-tweets = tweetObject[0]
-json_str = json.dumps(tweets._json)
-# for i in json_str:
-#     tweetDictionary.update({'Date': i.created_at, 'tweetText': i.text})
-print(tweetDictionary)
-print(json_str)
-for i in tweetObject:
-    print(i.text)
-    print(i.created_at)
-    tweetDictionary.update({'Date': i.created_at, 'tweetText': i.text})
-print(tweetDictionary)
-print('the tweet Dictionary Length is: ' + tweetDictionary.length())
+    tweetObject = api.search(topic, lang='en', count=count)
+    tweets = tweetObject[0]
+    json_str = json.dumps(tweets._json)
+    print(tweetDictionary)
+    print(json_str)
+    for i in tweetObject:
+        # print(i.text)
+        # print(i.created_at)
+        tweetDictionary.update({'Date': i.created_at, 'tweetText': i.text})
+    print(tweetDictionary)
+    print('the tweet Dictionary Length is: ')
+    print(len(tweetDictionary))
